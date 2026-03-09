@@ -1,14 +1,13 @@
-package com.example.emtlab.service.domain;
+package com.example.emtlab.service.application;
 
 import com.example.emtlab.model.domain.Book;
 
 import java.util.List;
 import java.util.Optional;
 
-public interface BookService {
+public interface BookApplicationService {
     Optional<Book> findById(Long id);
     List<Book> findAll();
-    List<Book> findAllByCategoryAndState();
     Book create(Book book);
     Optional<Book> update(Long id, Book book);
     Optional<Book> borrowById(Long id);

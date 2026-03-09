@@ -1,7 +1,5 @@
 package com.example.emtlab.web.controller;
 
-package com.example.emtlab.web;
-
 import com.example.emtlab.model.domain.Book;
 import com.example.emtlab.service.domain.BookService;
 import org.springframework.http.ResponseEntity;
