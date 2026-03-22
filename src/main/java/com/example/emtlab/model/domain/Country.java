@@ -1,6 +1,7 @@
 package com.example.emtlab.model.domain;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@Table(name="country")
 public class Country extends BaseEntity{
     private String name;
 
