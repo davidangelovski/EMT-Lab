@@ -15,6 +15,20 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Table(name="book")
+@NamedEntityGraph(
+        name = "Book.withAuthorAndCountry",
+        attributeNodes = {
+                @NamedAttributeNode(value = "author", subgraph = "author-subgraph")
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "author-subgraph",
+                        attributeNodes = {
+                                @NamedAttributeNode("country")
+                        }
+                )
+        }
+)
 public class Book extends BaseAuditableEntity{
     private String name;
 

@@ -2,10 +2,18 @@ package com.example.emtlab.service.application.impl;
 
 import com.example.emtlab.model.dto.CreateBookDto;
 import com.example.emtlab.model.dto.DisplayBookDto;
+import com.example.emtlab.model.enums.Category;
+import com.example.emtlab.model.enums.State;
+import com.example.emtlab.model.projection.BookDetailsProjection;
+import com.example.emtlab.model.projection.BookShortProjection;
+import com.example.emtlab.model.projection.BookStatsProjection;
+import com.example.emtlab.model.projection.BookViewProjection;
 import com.example.emtlab.service.application.BookApplicationService;
 import com.example.emtlab.service.domain.AuthorService;
 import com.example.emtlab.service.domain.BookService;
 import com.example.emtlab.service.domain.impl.BookServiceImpl;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -47,5 +55,30 @@ public class BookApplicationServiceImpl implements BookApplicationService {
     @Override
     public Optional<DisplayBookDto> deleteById(Long id) {
         return bookService.deleteById(id).map(DisplayBookDto::from);
+    }
+
+    @Override
+    public Page<DisplayBookDto> findAllFiltered(Category category, State state, Long authorId, Boolean available, Pageable pageable) {
+        return bookService.findAllFiltered(category, state, authorId, available, pageable).map(DisplayBookDto::from);
+    }
+
+    @Override
+    public List<BookShortProjection> findAllShort() {
+        return bookService.findAllShort();
+    }
+
+    @Override
+    public List<BookDetailsProjection> findAllDetailed() {
+        return bookService.findAllDetailed();
+    }
+
+    @Override
+    public List<BookViewProjection> getBookView() {
+        return bookService.getBookView();
+    }
+
+    @Override
+    public List<BookStatsProjection> getStats() {
+        return bookService.getStats();
     }
 }
